@@ -57,8 +57,7 @@
       }
     },
     methods: {
-      getCommentsList: function() {
-        //this.$http.get( 'https://spenden.wikimedia.de/list-comments.json' ).then( this.successCallback, this.errorCallback );
+      fakeCommentsList: function() {
         return {
           1: {
             "betrag": 15,
@@ -90,15 +89,18 @@
           }
         }
       },
+      fetchData: function () {
+        this.$http.get( 'https://spenden.wikimedia.de/list-comments.json' ).then( this.successCallback, this.errorCallback );
+      },
       successCallback: function( data ) {
-        console.log( 'success' );
+        this.comments = data;
       },
       errorCallback: function() {
         console.log( 'error' );
       }
     },
     mounted: function() {
-      this.comments = this.getCommentsList();
+      this.fetchData();
     }
   }
 </script>

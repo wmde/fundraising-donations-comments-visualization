@@ -1,6 +1,5 @@
-# donation-comments
-
-> Display donation comments
+## Description
+Visualization board for the comments people leave after they donate at www.spenden.wikimedia.de
 
 ## Build Setup
 
@@ -16,3 +15,4 @@ npm run build
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
