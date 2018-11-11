@@ -2,7 +2,7 @@
   <div id="app" class="container-fluid">
     <div class="title"><h1>{{ title }}</h1></div>
     <div class="row">
-      <div class="theme-orange col-sm-3">
+      <div class="theme-orange col-sm-3" align="center">
         <h4>Latest Comments</h4>
         <comment v-for="comment in comments"
                  :amount="comment.betrag"
@@ -10,9 +10,7 @@
                  :content="comment.kommentar">
         </comment>
       </div>
-      <div class="hashtag-box col-sm-9">
-        <div class="row">
-          <div class="theme-green col-sm-4">
+          <div class="theme-green col-sm-3" align="center">
             <h4>#wikipedia</h4>
             <comment v-for="comment in comments"
                      :amount="comment.betrag"
@@ -20,7 +18,7 @@
                      :content="comment.kommentar">
             </comment>
           </div>
-          <div class="theme-blue col-sm-4">
+          <div class="theme-blue col-sm-3" align="center">
             <h4>#knowledge</h4>
             <comment v-for="comment in comments"
                      :amount="comment.betrag"
@@ -28,7 +26,7 @@
                      :content="comment.kommentar">
             </comment>
           </div>
-          <div class="theme-purple col-sm-4">
+          <div class="theme-purple col-sm-3" align="center">
             <h4>#love</h4>
             <comment v-for="comment in comments"
                      :amount="comment.betrag"
@@ -36,8 +34,6 @@
                      :content="comment.kommentar">
             </comment>
           </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -58,7 +54,7 @@
     },
     methods: {
       fakeCommentsList: function() {
-        return {
+        this.comments = {
           1: {
             "betrag": 15,
             "spender": "Jimmy Whales",
@@ -100,7 +96,7 @@
       }
     },
     mounted: function() {
-      this.fetchData();
+      this.fakeCommentsList();
     }
   }
 </script>
