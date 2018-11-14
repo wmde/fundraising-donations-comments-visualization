@@ -66,21 +66,22 @@
 		},
 		methods: {
 			fetchData: function () {
-				this.$http.get( 'https://spenden.wikimedia.de/list-comments.json?n=50' ).then( this.successCallback, this.errorCallback );
-			},
-			successCallback: function( data ) {
-			  let self = this;
-				this.list = data.body;
-				this.comments.top = this.filterTopComments( 4 );
-				this.keywords.forEach( function ( keyword ) {
-					self.comments[ keyword ] = self.filterByKeyword( keyword );
-				} );
-			},
-			errorCallback: function() {
-				console.log( 'error' );
+				this.$http.jsonp( 'https://spenden.wikimedia.de/list-comments.json?f=commentData&n=50', {
+					jsonpCallback: 'commentData'
+				}).then( data => {
+					let self = this;
+					this.comments = data.body;
+					this.list = data.body;
+					this.comments.top = this.filterTopComments( 4 );
+					this.keywords.forEach( function( keyword ) {
+						self.comments[keyword] = self.filterByKeyword( keyword );
+					} );
+				} ).catch( err => {
+					console.log( err );
+				} )
 			},
 			filterByKeyword: function( keyword ) {
-				return this.list.filter( comment => RegExp('\\b'+ keyword +'\\b').test( comment.kommentar.toLowerCase() ) ).slice( 0, 4 );
+				return this.list.filter( comment => RegExp( '\\b' + keyword + '\\b' ).test( comment.kommentar.toLowerCase() ) ).slice( 0, 4 );
 			},
 			filterTopComments: function( limit ) {
 				return this.list.slice( 0, limit );
