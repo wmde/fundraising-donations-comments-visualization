@@ -1,9 +1,9 @@
 <template>
 	<div id="app" class="container-fluid">
-		<div class="title"><h1>{{ title }}</h1></div>
+		<div class="title"><h3>{{ title }}</h3></div>
 		<div class="row">
-			<div class="theme-orange col-sm-3" align="center">
-				<h4>Latest Comments</h4>
+			<div class="theme-orange col-sm-4" align="center">
+				<h4>Letzte Kommentare</h4>
 				<comment v-for="comment in comments.top"
 								 :keyid="comment.id"
 								 :amount="comment.betrag"
@@ -11,7 +11,7 @@
 								 :content="comment.kommentar">
 				</comment>
 			</div>
-			<div v-bind:class="{ 'theme-green': keyword === 'wikipedia', 'theme-blue': keyword === 'wissen', 'theme-purple': keyword === 'internet', 'col-sm-3': true }"
+			<div v-bind:class="{ 'theme-green': keyword === 'wikipedia', 'theme-blue': keyword === 'wissen', 'col-sm-4': true }"
 					 align="center"
 					 v-for="keyword in keywords">
 				<h4>#{{ keyword }}</h4>
@@ -37,13 +37,12 @@
 		data() {
 			return {
 				title: 'Herbstkampagne 2018 Spendenkommentare',
-				keywords: [ 'wikipedia', 'wissen', 'internet' ],
+				keywords: [ 'wikipedia', 'wissen' ],
 				list: {},
 				comments: {
 					top: [],
 					wikipedia: [],
-					wissen: [],
-					internet: []
+					wissen: []
 				}
 			}
 		},
@@ -81,8 +80,8 @@
 	@import '../node_modules/bootstrap/scss/bootstrap.scss';
 	body {
 		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, 'Oxygen-Sans', Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		font-size: 16px;
-		background: linear-gradient(90deg, white 18%, lightgray 18%);
+		font-size: 18px;
+		background: linear-gradient(90deg, white 23%, lightgray 23%);
 	}
 	#app {
 		margin-top: 20px;
@@ -91,16 +90,15 @@
 		width: 50%;
 		margin: 0 auto;
 	}
-	h1 {
+	h3 {
 		font-weight: bold;
-		margin-bottom: 0.5em;
 		border: 4px solid black;
 		background: #f8f9fa;
 		padding: 5px;
 		text-align: center;
 	}
 	h4 {
-		margin-top: 1em;
+		margin-top: 0.3em;
 	}
 	.theme-orange {
 		h4 {

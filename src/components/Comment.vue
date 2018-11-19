@@ -18,9 +18,9 @@
 
 <style scoped>
 	.block {
-		width: 80%;
+		width: 90%;
 		height: 100%;
-		margin-top: 5%;
+		margin-top: 3%;
 		padding: 10px;
 		transition: box-shadow 0s;
 		overflow: hidden;
