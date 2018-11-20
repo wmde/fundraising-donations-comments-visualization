@@ -48,30 +48,33 @@
 		},
 		methods: {
 			fetchData: function () {
-				this.$http.jsonp( 'https://spenden.wikimedia.de/list-comments.json?n=100&f=commentData', {
-					jsonpCallback: 'commentData'
-				} ).then( this.successCallback, this.errorCallback );
+					this.$http.jsonp( 'https://spenden.wikimedia.de/list-comments.json?n=100&f=commentData', {
+						jsonpCallback: 'commentData'
+					} ).then( this.successCallback, this.errorCallback );
 			},
 			successCallback: function( data ) {
 				let self = this;
 				this.list = data.body;
-				this.comments.top = this.filterTopComments( 4 );
+				this.comments.top = this.filterTopComments( 6 );
 				this.keywords.forEach( function ( keyword ) {
-					self.comments[ keyword ] = self.filterByKeyword( keyword );
+					self.comments[ keyword ] = self.filterByKeyword( keyword, 5 );
 				} );
 			},
 			errorCallback: function() {
 				console.log( 'error' );
 			},
-			filterByKeyword: function( keyword ) {
-				return this.list.filter( comment => RegExp('\\b'+ keyword +'\\b').test( comment.kommentar.toLowerCase() ) ).slice( 0, 4 );
+			filterByKeyword: function( keyword, limit ) {
+				return this.list.filter( comment => RegExp('\\b'+ keyword +'\\b').test( comment.kommentar.toLowerCase() ) ).slice( 0, limit );
 			},
 			filterTopComments: function( limit ) {
-				return this.list.slice( 0, limit );
+				return this.list.filter( comment => RegExp(/^((?!wikipedia|wissen).)*$/).test( comment.kommentar.toLowerCase() ) ).slice( 0, limit );
 			}
 		},
-		beforeMount: function() {
+		mounted: function() {
 			this.fetchData();
+			setInterval( function () {
+				this.fetchData();
+			}.bind( this ), 120000);
 		}
 	}
 </script>
