@@ -1,8 +1,8 @@
 <template>
-	<div id="app" class="container-fluid">
+	<div id="app">
 		<div class="title"><h3>{{ title }}</h3></div>
-		<div class="row">
-			<div class="theme-orange col-sm-4" align="center">
+		<div class="one-third">
+			<div class="theme-orange" align="center">
 				<h4>Letzte Kommentare</h4>
 				<comment v-for="comment in comments.top"
 								 :keyid="comment.id"
@@ -11,7 +11,7 @@
 								 :content="comment.kommentar">
 				</comment>
 			</div>
-			<div v-bind:class="{ 'theme-green': keyword === 'wikipedia', 'theme-blue': keyword === 'wissen', 'col-sm-4': true }"
+			<div v-bind:class="{ 'theme-green': keyword === 'wikipedia', 'theme-blue': keyword === 'wissen' }"
 					 align="center"
 					 v-for="keyword in keywords">
 				<h4>#{{ keyword }}</h4>
@@ -133,6 +133,18 @@
 		}
 		.block {
 			border: 2px solid purple;
+		}
+	}
+	.one-third > div {
+		width: 33.3%;
+		&:first-child {
+			float: left;
+		}
+		&:nth-child(2) {
+			display: inline-block;
+		}
+		&:last-child {
+			float: right;
 		}
 	}
 </style>
