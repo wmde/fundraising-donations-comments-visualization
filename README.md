@@ -1,5 +1,5 @@
 ## Description
-Visualization board for the comments people leave after they donate at www.spenden.wikimedia.de
+Visualization board for the comments people leave after they donate at [spenden.wikimedia.de](https://spenden.wikimedia.de/)
 
 ## Build Setup
 
