@@ -36,7 +36,7 @@
 		},
 		data() {
 			return {
-				title: 'Herbstkampagne 2018 Spendenkommentare',
+				title: 'Herbstkampagne 2019 Spendenkommentare',
 				keywords: [ 'wikipedia', 'wissen' ],
 				list: {},
 				comments: {
