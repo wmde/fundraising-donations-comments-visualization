@@ -1,6 +1,9 @@
 ## Description
 Visualization board for the comments people leave after they donate at [spenden.wikimedia.de](https://spenden.wikimedia.de/)
 
+**Abandoned:** This project is no longer used. We new have a new large-visualizer in the [donation app frontend code](https://github.com/wmde/fundraising-app-frontend/blob/main/src/components/pages/CommentTicker.vue).
+Comments can be seen at https://spenden.wikimedia.de/comment-ticker
+
 ## Build Setup
 
 ``` bash
